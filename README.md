@@ -1,9 +1,9 @@
-
 Endpoints 
-| Request type  | endpoint            |description |
-| ------------- | -------------       ||
-| POST          | /api/v1/creditcards ||
-| GET           | /api/v1/creditcards ||
+
+| Request type   | endpoint | 
+| ------------- | ------------- | 
+| POST request to create a credit card  | /api/v1/creditcards  |   
+| GET  request to get all credit card | /api/v1/creditcards  |
 
 
 Assumptions/Decisions taken
