@@ -4,6 +4,10 @@ import com.deepak.creditcardapplication.model.*;
 import com.deepak.creditcardapplication.service.CreditCardService;
 import com.deepak.creditcardapplication.utils.AppUtils;
 import com.deepak.creditcardapplication.utils.CreditCardValidator;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +19,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1")
+@Api(value = "Credit Card Rest API")
 public class CreditCardController {
 
     private CreditCardValidator creditCardValidator;
@@ -26,6 +31,11 @@ public class CreditCardController {
         this.creditCardService = creditCardService;
     }
 
+    @ApiOperation(value = "Get a list of all credit cards in the system", response = List.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved list of credit cards"),
+            @ApiResponse(code = 204, message = "Request was sucessful, but retrieved empty credit cards from the system")
+    })
     @GetMapping("/creditcards")
     public ResponseEntity<List<CreditCardResponseDTO>> getAllCreditCards() {
         log.debug("Getting all credit cards");
@@ -40,6 +50,11 @@ public class CreditCardController {
         return ResponseEntity.ok(AppUtils.getCreditCardResponsesFromModels(allCreditCards));
     }
 
+    @ApiOperation(value = "Create a new Credit card", response = CreditCardResponseDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successfully created credit card in the system"),
+            @ApiResponse(code = 400, message = "Either validation failed or a bad request")
+    })
     @PostMapping("/creditcards")
     public ResponseEntity<CreditCardResponseDTO> addNewCreditCard(@Valid @RequestBody CreditCardRequestDTO creditCardRequestDTO) throws InvalidCreditCardNumberException, DuplicateCreditCardNumberException {
         log.debug("Creating new credit card with the input = {} ", creditCardRequestDTO);
