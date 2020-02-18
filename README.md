@@ -1,9 +1,9 @@
 Endpoints 
 
-| Request type   | endpoint | 
-| ------------- | ------------- | 
-| POST request to create a credit card  | /api/v1/creditcards  |   
-| GET  request to get all credit card | /api/v1/creditcards  |
+| Request type   | endpoint | Sample request| Status codes
+| ------------- | ------------- | -------| -------
+| POST request to create a credit card  | /api/v1/creditcards  | { "cardHolderName":"Hello", "cardNumber": "1234567812345670", "limit": 3500 } | **201** - For Successful creation of credit card, **400** - for invalid bad requests (including Luhn 10 check) and duplicate credit card requests
+| GET  request to get all credit card | /api/v1/creditcards  | | **200** - For Successful retrieval of credit card, **204** - For no data requests
 
 
 Assumptions/Decisions taken
