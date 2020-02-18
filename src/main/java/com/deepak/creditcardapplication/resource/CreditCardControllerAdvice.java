@@ -1,8 +1,9 @@
-package com.deepak.creditcardapplication.utils;
+package com.deepak.creditcardapplication.resource;
 
 import com.deepak.creditcardapplication.model.CommonErrorResponse;
 import com.deepak.creditcardapplication.model.DuplicateCreditCardNumberException;
 import com.deepak.creditcardapplication.model.InvalidCreditCardNumberException;
+import com.deepak.creditcardapplication.utils.AppUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
