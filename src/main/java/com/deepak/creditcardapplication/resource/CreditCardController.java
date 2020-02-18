@@ -1,6 +1,5 @@
 package com.deepak.creditcardapplication.resource;
 
-
 import com.deepak.creditcardapplication.model.*;
 import com.deepak.creditcardapplication.service.CreditCardService;
 import com.deepak.creditcardapplication.utils.AppUtils;
@@ -31,45 +30,33 @@ public class CreditCardController {
     public ResponseEntity<List<CreditCardResponseDTO>> getAllCreditCards() {
         log.debug("Getting all credit cards");
 
-        //Todo change the output
-
-        //todo return 204 no content in case there are no reocrds
-
         List<CreditCard> allCreditCards = creditCardService.getAllCreditCards();
 
-        log.debug("allCreditCards={}", allCreditCards);
-        //Return 204
+        //Return 204 in case of no credit card records in DB
         if (allCreditCards.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
 
-
         return ResponseEntity.ok(AppUtils.getCreditCardResponsesFromModels(allCreditCards));
     }
-
 
     @PostMapping("/creditcards")
     public ResponseEntity<CreditCardResponseDTO> addNewCreditCard(@Valid @RequestBody CreditCardRequestDTO creditCardRequestDTO) throws InvalidCreditCardNumberException, DuplicateCreditCardNumberException {
         log.debug("Creating new credit card with the input = {} ", creditCardRequestDTO);
 
-        //Todo validate the request
+        //validate the request, any errors in validating are created as exceptions and handled by CreditCardControllerAdvice class
         creditCardValidator.validate(creditCardRequestDTO);
 
         //This is needed to abstract the real model to the outside world which is not needed
         CreditCard creditCard = AppUtils.createCreditCardModelFromRequest(creditCardRequestDTO);
 
-        log.debug("Credit Card model to be saved =  {}", creditCard);
-
-        //Todo persist the Credit card model in the DB
         final CreditCard creditCardSaved = creditCardService.saveCreditCard(creditCard);
 
-        log.debug("Credit Card model saved in the DB = {}", creditCardSaved);
+        log.debug("credit card saved ={}", creditCardSaved);
 
         CreditCardResponseDTO creditCardResponseDTO = AppUtils.getCreditCardResponseDTO(creditCardSaved);
 
         return new ResponseEntity<>(creditCardResponseDTO, HttpStatus.CREATED);
     }
-
-
 
 }
