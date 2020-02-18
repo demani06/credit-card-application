@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class DuplicateCreditCardNumberException extends Exception {
 
-    public DuplicateCreditCardNumberException() {
-    }
-
     public DuplicateCreditCardNumberException(String message) {
         super(message);
     }

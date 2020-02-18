@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class InvalidCreditCardNumberException extends Exception {
 
-    public InvalidCreditCardNumberException() {
-    }
-
     public InvalidCreditCardNumberException(String message) {
         super(message);
     }

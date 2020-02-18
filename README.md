@@ -17,8 +17,8 @@
 
 - To build the application
 ```mvn clean install ```
-- To build and generate the test report and report gets generated in the folder - {basedir}/target/site/surefire-report.html
-```mvn clean install surefire-report:report```
+- To build and generate the test report and report gets generated in the folder - {basedir}/target/site/jacoco/index.html
+```mvn clean test```
 - To run the application
 ```mvn spring-boot:run ```
 
