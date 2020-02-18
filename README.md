@@ -1,4 +1,4 @@
-Endpoints 
+**Endpoints**
 
 | Request type   | endpoint | Sample request| Status codes
 | ------------- | ------------- | -------| -------
@@ -6,13 +6,14 @@ Endpoints
 | GET  request to get all credit card | /api/v1/creditcards  | | **200** - For Successful retrieval of credit card, **204** - For no data requests
 
 
-Assumptions/Decisions taken
+**Assumptions/Decisions taken**
 
 1. Using HSQL embedded database
 2. Used Spock groovy for test cases which aid more readability
 3. Used Lombok for auto-generation of code and Sl4j implementation
+4. Application runs on port 9099 (chosen an arbitrary port and it can be changed in the application.properties)
 
-Build and run the application
+**Build and run the application**
 
 - To build the application
 ```mvn clean install ```
@@ -21,4 +22,7 @@ Build and run the application
 - To run the application
 ```mvn spring-boot:run ```
 
+**Swagger Integration**
+
+Swagger is integrated in the application and Swagger UI is at the URL  ```http://localhost:9099/swagger-ui.html ```
   
