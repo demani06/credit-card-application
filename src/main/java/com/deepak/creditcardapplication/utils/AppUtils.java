@@ -15,6 +15,7 @@ public class AppUtils {
     public static final String CREDIT_CARD_NUMBER_SHOULD_BE_ONLY_A_NUMBER = "Credit Card number should be only a number";
     public static final String CREDIT_CARD_NUMBER_UNIQUE_CHECK_FAILED = "Credit Card number unique check failed";
     public static final String INVALID_CREDIT_CARD_NUMBER = "Invalid Credit Card number";
+    public static final String REGEX_FOR_NUMBER_ONLY = "[0-9]+";
 
     public static CreditCard createCreditCardModelFromRequest(CreditCardRequestDTO creditCardRequestDTO) {
 
