@@ -13,7 +13,7 @@
 3. Used Lombok for auto-generation of code and Sl4j implementation for logging
 4. Application runs on port 9099 (chosen an arbitrary port and it can be changed in the application.properties)
 
-**Build and run the application**
+**Build and run the application** (from the basedir - for example - C:\work\credit-card-application)
 
 - To build the application
 ```mvn clean install ```
