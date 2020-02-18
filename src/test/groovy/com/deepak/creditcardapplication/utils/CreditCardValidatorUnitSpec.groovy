@@ -17,7 +17,7 @@ class CreditCardValidatorUnitSpec extends Specification {
         validator = new CreditCardValidator()
     }
 
-    @Unroll("test the validate method - #scenario")
+    @Unroll("test the validate method for negative cases- #scenario")
     def "test the validate method"() {
 
         given: "Validation method exists to validate the input request and different requests are sent to this method"
@@ -43,6 +43,33 @@ class CreditCardValidatorUnitSpec extends Specification {
         'LUHN 10 check -ve case'      || '2233232'          || 'Boon'         || 2500  || AppUtils.CREDIT_CARD_LUHN_10_CHECK_FAILED_MSG
         //'LUHN 10 check +ve case'      || '1234567812345670' || 'David'        || 2500  || null
         'creditcard aphanumeric test' || '123456a812345670' || 'David'        || 2500  || AppUtils.CREDIT_CARD_NUMBER_SHOULD_BE_ONLY_A_NUMBER
+        'creditcard with space test'  || '123 6812345670'   || 'David'        || 2500  || AppUtils.CREDIT_CARD_NUMBER_SHOULD_BE_ONLY_A_NUMBER
+
+    }
+
+    @Unroll("test the validate method for positive scenarios- #scenario")
+    def "test the validate method for positive scenarios"() {
+
+        given: "Validation method exists to validate the input request and different requests are sent to this method"
+
+        CreditCardRequestDTO creditCardRequestDTO = CreditCardRequestDTO
+                .builder()
+                .cardHolderName(cardHolderName)
+                .cardNumber(creditCardNumber)
+                .limit(limit)
+                .build()
+
+        when: "When I call this method"
+
+        validator.validate(creditCardRequestDTO)
+
+        then: "It should validate the credit card number for different scenarios and should not throw an exception"
+
+        noExceptionThrown()
+
+        where:
+        scenario                 || creditCardNumber   || cardHolderName || limit
+        'LUHN 10 check +ve case' || '1234567812345670' || 'David'        || 2500
 
     }
 

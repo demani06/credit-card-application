@@ -1,13 +1,14 @@
 package com.deepak.creditcardapplication.service;
 
 import com.deepak.creditcardapplication.model.CreditCard;
+import com.deepak.creditcardapplication.model.DuplicateCreditCardNumberException;
 
-import java.util.Set;
+import java.util.List;
 
 public interface CreditCardService {
 
-    Set<CreditCard> getAllCreditCards();
+    List<CreditCard> getAllCreditCards();
 
-    CreditCard saveCreditCard();
+    CreditCard saveCreditCard(CreditCard card) throws DuplicateCreditCardNumberException;
 
 }

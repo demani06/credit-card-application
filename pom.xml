@@ -23,20 +23,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -57,19 +57,6 @@
             <version>1.2-groovy-2.4</version>
             <scope>test</scope>
         </dependency>
-
-        <!--<dependency> &lt;!&ndash; enables mocking of classes (in addition to interfaces) &ndash;&gt;
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>1.6.5</version>
-            <scope>test</scope>
-        </dependency>-->
-        <!--<dependency> &lt;!&ndash; enables mocking of classes without default constructor (together with CGLIB) &ndash;&gt;
-            <groupId>org.objenesis</groupId>
-            <artifactId>objenesis</artifactId>
-            <version>2.5.1</version>
-            <scope>test</scope>
-        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -149,6 +136,7 @@
                         <phase>integration-test</phase>
                         <goals>
                             <goal>integration-test</goal>
+                            <goal>verify</goal>
                         </goals>
                     </execution>
                 </executions>

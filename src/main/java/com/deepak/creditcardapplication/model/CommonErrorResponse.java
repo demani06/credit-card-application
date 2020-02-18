@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CommonErrorResponse {
 
+    //TODO add more audit details like User and datetime
     private String errorMessage;
 
     private List<String> errorMessageDetails;
