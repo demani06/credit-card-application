@@ -10,12 +10,13 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class CreditCardRequestDTO {
 
     @NotEmpty(message = "Please provide card holder name")
     private String cardHolderName;
     @NotEmpty(message = "Please provide card number")
-    @Size(min = 16, message = "Minimum size is 16")
+    @Size(max = 19, message = "Maximum size is 19 characters")
     private String cardNumber;
     private long limit;
 

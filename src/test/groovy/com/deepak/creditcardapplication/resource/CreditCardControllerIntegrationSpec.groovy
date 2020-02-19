@@ -72,8 +72,8 @@ class CreditCardControllerIntegrationSpec extends Specification {
 
     }
 
-    @Unroll("Integration test the post creditcards endpoint for different status codes ~ scenario")
-    def "Integration test the post creditcards endpoint for status code ~ scenario"() {
+    @Unroll("Integration test the post creditcards endpoint for different status codes ~ #scenario")
+    def "Integration test the post creditcards endpoint for status code ~ #scenario"() {
 
         HttpHeaders headers = new HttpHeaders()
 
@@ -110,10 +110,12 @@ class CreditCardControllerIntegrationSpec extends Specification {
         assert response.getStatusCode() == httpStatus
 
         where:
-        scenario                                                 || creditCardNumber   || cardHolderName || limit || httpStatus
-        '201 status code case1'                                  || '1234567812345670' || 'David'        || 2500  || HttpStatus.CREATED
-        '400 status code case with invalid credit card number'   || '1234567812345671' || 'David'        || 2500  || HttpStatus.BAD_REQUEST
-        '400 status code case with duplicate credit card number' || '6331101999990016' || 'Jennifer'     || 4500  || HttpStatus.BAD_REQUEST
+        scenario                                                 || creditCardNumber       || cardHolderName || limit || httpStatus
+        '201 status code case1'                                  || '1234567812345670'     || 'David'        || 2500  || HttpStatus.CREATED
+        '201 status code case with length 19 credit card number' || '4917610000000000003'  || 'David'        || 2500  || HttpStatus.CREATED
+        '400 status code case with invalid credit card number'   || '1234567812345671'     || 'David'        || 2500  || HttpStatus.BAD_REQUEST
+        '400 status code case with length 20 credit card number' || '67717717717717700001' || 'David'        || 2500  || HttpStatus.BAD_REQUEST
+        '400 status code case with duplicate credit card number' || '6331101999990016'     || 'Jennifer'     || 4500  || HttpStatus.BAD_REQUEST
 
 
     }
